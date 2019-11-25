@@ -6,10 +6,10 @@ import reducers from './reducers';
 
 const middleware = [thunk];
 
-const composeEnhancers =
-  typeof window !== 'undefined'
-    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-    : compose; // eslint-disable-line
+// const composeEnhancers =
+//   typeof window !== 'undefined'
+//     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+//     : compose; 
 
 let state;
 if (typeof window !== 'undefined') {
@@ -22,7 +22,7 @@ let isServer = typeof window === 'undefined';
 const store = createStore(
   reducers,
   state,
-  composeEnhancers(applyMiddleware(...middleware))
+  applyMiddleware(...middleware)
 );
 
 if(isClient){

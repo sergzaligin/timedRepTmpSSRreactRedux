@@ -54,12 +54,23 @@ app.get('*', (req, res) => {
   // console.log('req.params', req.path);
 
   const params = req.params[0].split('/');
-  const id = params[2];
+  const id = params[params.length - 1];
 
-  const promises = matchRoutes(Routes, req.path)
+  //console.log('params', id);
+
+  const routes = matchRoutes(Routes, req.path);
+
+  const promises = routes
     .map(({ route }) => {
-      // console.log('route ===>', route);
-      return route.loadData ? route.loadData(store, id) : null;
+
+      if(route.loadData){
+
+        return route.loadData(store, id);
+      }else{
+
+          return null;
+      }
+      
     })
     .map(promise => {
         if (promise) {
@@ -69,9 +80,13 @@ app.get('*', (req, res) => {
                     return new Promise((resolve, reject) => {
                       el.then(resolve).catch(resolve);
                     });
+                  }else{
+                    return null;
                   }
               })
 
+        }else{
+          return null;
         }
     });
 
@@ -91,7 +106,7 @@ app.get('*', (req, res) => {
     }
 
     res.send(content);
-  }).catch(err => console.error(err));;
+  });
 });
 
 app.listen(3000, () => {

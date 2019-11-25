@@ -6,6 +6,7 @@ import { fetchTodos, fetchNewTodos } from '../store/actions';
 
 // eslint-disable-next-line no-shadow
 const Todo = ({ fetchTodos, todos, fetchNewTodos, newtodos }) => {
+
   useEffect(() => {
     fetchTodos();
     fetchNewTodos();
@@ -26,6 +27,7 @@ const Todo = ({ fetchTodos, todos, fetchNewTodos, newtodos }) => {
           {newtodo.id} {newtodo.name}
         </p>
       ))}
+      
       </div>
       <hr />
       <br />
