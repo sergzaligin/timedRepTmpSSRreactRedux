@@ -67,7 +67,7 @@ app.get('*', (req, res) => {
                   if (el) {
                     //console.log('el ===>', el);
                     return new Promise((resolve, reject) => {
-                      el.then(resolve);
+                      el.then(resolve).catch(resolve);
                     });
                   }
               })

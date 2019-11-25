@@ -1,6 +1,6 @@
 // admin
 import Admin from './admin';
-
+import Post from './post';
 // main
 import Application from './application';
 
@@ -12,6 +12,7 @@ export default [
      ...Root,
     routes: [
       ...Application,
+      ...Post,
       ...Admin,
       {
         ...NotFound,
