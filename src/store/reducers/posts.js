@@ -1,9 +1,10 @@
-import { FETCH_POSTS, FETCH_POST } from '../types';
+import { FETCH_POSTS, FETCH_POST, FETCH_POST_PREVIEW } from '../types';
 
 const initialState = {
 
 	posts: [],
   postView: {},
+  postPreview: [],
 
 };
 
@@ -18,6 +19,11 @@ export default (state = initialState, action) => {
       return {
       	...state,
 		    postView: action.payload
+      }
+    case FETCH_POST_PREVIEW:
+      return {
+        ...state,
+        postPreview: action.payload
       }
     default:
       return state;

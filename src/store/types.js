@@ -4,3 +4,4 @@ export const FETCH_NEWTODOS = 'FETCH_NEWTODOS';
 
 export const FETCH_POST = 'FETCH_POST';
 export const FETCH_POSTS = 'FETCH_POSTS';
+export const FETCH_POST_PREVIEW = 'FETCH_POST_PREVIEW';

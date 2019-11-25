@@ -1,6 +1,13 @@
 import axios from 'axios';
 
-import { SET_HELLO, FETCH_TODOS, FETCH_NEWTODOS, FETCH_POSTS, FETCH_POST } from './types';
+import { 
+  SET_HELLO, 
+  FETCH_TODOS, 
+  FETCH_NEWTODOS, 
+  FETCH_POSTS, 
+  FETCH_POST, 
+  FETCH_POST_PREVIEW 
+} from './types';
 
 export const setHello = payload => ({
   type: SET_HELLO,
@@ -41,6 +48,16 @@ export const fetchPosts = () => async dispatch => {
   });
 };
 
+export const fetchPostsPreview = () => async dispatch => {
+  const response = await axios.get(
+    'https://jsonplaceholder.typicode.com/posts'
+  );
+
+  dispatch({
+    type: FETCH_POST_PREVIEW,
+    payload: response.data
+  });
+};
 
 export const fetchPostView = (id) => async dispatch => {
   const response = await axios.get(
